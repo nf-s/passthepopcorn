@@ -2,6 +2,7 @@ import got, {
   Got,
   OptionsOfJSONResponseBody,
   OptionsOfBufferResponseBody,
+  OptionsOfTextResponseBody,
 } from 'got'
 
 class Connection {
@@ -81,6 +82,16 @@ class Connection {
     await this.consumeToken()
 
     options.responseType = 'buffer'
+    return (await this.client.get(url, options)).body
+  }
+
+  public async getText(
+    url: string,
+    options: OptionsOfTextResponseBody = { responseType: 'text' },
+  ): Promise<string> {
+    await this.consumeToken()
+
+    options.responseType = 'text'
     return (await this.client.get(url, options)).body
   }
 }

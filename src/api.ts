@@ -67,7 +67,7 @@ class Api {
         err.response &&
         err.response.statusCode === 403 &&
         err.response.body ===
-          'This page is not allowed to be accessed by the API\n'
+        'This page is not allowed to be accessed by the API\n'
       ) {
         return undefined
       }
